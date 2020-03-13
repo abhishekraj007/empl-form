@@ -36,20 +36,20 @@ const EmployeeForm = props => {
       validateMessages={validateMessages}
     >
       <Row gutter={[16, 0]}>
-        <Col md={12}>
+        <Col xs={24} md={12}>
           <Form.Item name="name" label="Name" rules={[{ required: true }]}>
             <Input placeholder="Enter your name" />
           </Form.Item>
         </Col>
 
-        <Col md={12}>
+        <Col xs={24} md={12}>
           <Form.Item name="id" label="Employee ID" rules={[{ required: true }]}>
             <Input placeholder="Enter your Employee ID " />
           </Form.Item>
         </Col>
       </Row>
       <Row gutter={[16, 0]}>
-        <Col md={12}>
+        <Col xs={24} md={12}>
           <Form.Item
             name="department"
             label="Select Department"
@@ -66,7 +66,7 @@ const EmployeeForm = props => {
           </Form.Item>
         </Col>
 
-        <Col md={12}>
+        <Col xs={24} md={12}>
           <Form.Item
             name="email"
             label="Email"
@@ -77,13 +77,13 @@ const EmployeeForm = props => {
         </Col>
       </Row>
       <Row gutter={[16, 0]}>
-        <Col md={12}>
+        <Col xs={24} md={12}>
           <Form.Item
             name="doj"
             label="Date of Joining"
             rules={[{ required: true }]}
           >
-            <DatePicker />
+            <DatePicker style={{ width: "100%" }} />
           </Form.Item>
         </Col>
       </Row>
