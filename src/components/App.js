@@ -18,7 +18,7 @@ class App extends React.Component {
     });
   };
 
-  addEmployee = () => {
+  addNewEmployee = () => {
     this.setState({
       modalVisible: true
     });
@@ -31,14 +31,18 @@ class App extends React.Component {
         tableData: [...prevState.tableData, values]
       };
     });
-    // console.log(this.state.tableData);
+  };
+
+  deleteEmployee = id => {
+    const dataSource = [...this.state.tableData];
+    this.setState({ tableData: dataSource.filter(item => item.id !== id) });
   };
 
   render() {
     return (
       <div className="container">
-        <Button type="primary" onClick={this.addEmployee}>
-          New Employee
+        <Button type="primary" onClick={this.addNewEmployee}>
+          Add New Employee
         </Button>
 
         <Modal
@@ -53,7 +57,10 @@ class App extends React.Component {
           />
         </Modal>
 
-        <EmployeeTable data={this.state.tableData} />
+        <EmployeeTable
+          deleteEmployee={this.deleteEmployee}
+          data={this.state.tableData}
+        />
       </div>
     );
   }

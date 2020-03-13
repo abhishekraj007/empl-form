@@ -1,11 +1,7 @@
 import React, { Component } from "react";
-import { Table } from "antd";
+import { Table, Popconfirm, Button } from "antd";
 
 export default class EmployeeTable extends Component {
-  // state = {
-  //   data: this.props.data
-  // };
-
   columns = [
     {
       title: "Name",
@@ -14,8 +10,8 @@ export default class EmployeeTable extends Component {
     },
     {
       title: "Employee ID",
-      dataIndex: "ID",
-      key: "ID"
+      dataIndex: "id",
+      key: "id"
     },
     {
       title: "Department",
@@ -31,22 +27,44 @@ export default class EmployeeTable extends Component {
       title: "Date of Joining",
       dataIndex: "doj",
       key: "doj"
+    },
+    {
+      title: "",
+      dataIndex: "action",
+      render: (text, record) =>
+        this.props.data.length > 0 ? (
+          <Popconfirm
+            title="Sure to delete?"
+            onConfirm={() => this.handleDelete(record.id)}
+          >
+            <Button type="link">Delete</Button>
+          </Popconfirm>
+        ) : null
+      // key: "doj"
     }
   ];
 
+  handleDelete = id => {
+    console.log(id);
+    this.props.deleteEmployee(id);
+  };
+
   render() {
     const { data } = this.props;
-    console.log(data);
+    // console.log(data);
 
     const renderTable = () => {
       if (data.length) {
         return (
-          <Table
-            pagination={false}
-            dataSource={data}
-            columns={this.columns}
-            style={{ marginTop: "2rem" }}
-          />
+          <>
+            <h3 style={{ marginTop: "2rem" }}>New Hiring Details</h3>
+            <Table
+              pagination={false}
+              dataSource={data}
+              columns={this.columns}
+              style={{ marginTop: "1rem" }}
+            />
+          </>
         );
       } else {
         return null;

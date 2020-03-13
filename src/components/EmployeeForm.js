@@ -15,7 +15,8 @@ const EmployeeForm = props => {
   const onFinish = values => {
     const formateValues = {
       ...values,
-      doj: values["doj"].format("YYYY-MM-DD")
+      doj: values["doj"].format("YYYY-MM-DD"),
+      key: values["id"]
     };
     // console.log(formateValues);
     props.handleModalClose();
@@ -42,7 +43,7 @@ const EmployeeForm = props => {
         </Col>
 
         <Col md={12}>
-          <Form.Item name="ID" label="employeeId" rules={[{ required: true }]}>
+          <Form.Item name="id" label="Employee ID" rules={[{ required: true }]}>
             <Input placeholder="Enter your Employee ID " />
           </Form.Item>
         </Col>
@@ -55,10 +56,12 @@ const EmployeeForm = props => {
             rules={[{ required: true }]}
           >
             <Select placeholder="Select Department">
-              <Select.Option value="design">Design</Select.Option>
-              <Select.Option value="frontend">Front End</Select.Option>
-              <Select.Option value="backend">Back End</Select.Option>
-              <Select.Option value="hr">Human Resource</Select.Option>
+              <Select.Option value="Design">Design</Select.Option>
+              <Select.Option value="Front End">Front End</Select.Option>
+              <Select.Option value="Back End">Back End</Select.Option>
+              <Select.Option value="Human Resource">
+                Human Resource
+              </Select.Option>
             </Select>
           </Form.Item>
         </Col>
